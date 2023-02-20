@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { privateEncrypt } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
@@ -34,10 +35,9 @@ export async function hashMatch(stringToCheck, hashedString) {
  * @returns the token string
  */
 export function createToken(payload) {
-  const keyPath = path.resolve('.ssh', 'key');
-  const privateKey = readFileSync(keyPath, {encoding: 'utf8'});
+  const privateKey = process.env['SECRET_KEY'];
   if (!privateKey) {
-    throw Error('No private key at <base_dir>/.ssh/key')
+    throw Error('No SECRET_KEY environment variable set');
   }
   const token = jwt.sign(payload, `${privateKey}`, { expiresIn: '2h' });
   return token;
@@ -50,10 +50,9 @@ export function createToken(payload) {
  */
 export function getSessionPayload(token) {
   let payload = {user_hash: ''};
-  const keyPath = path.resolve('.ssh', 'key');
-  const privateKey = readFileSync(keyPath, {encoding: 'utf8'});
+  const privateKey = process.env['SECRET_KEY'];
   if (!privateKey) {
-    throw Error('No private key at <base_dir>/.ssh/key')
+    throw Error('No SECRET_KEY environment variable set');
   }
   try {
     payload = jwt.verify(token, `${privateKey}`);
@@ -73,4 +72,13 @@ export function getUserHashFromSession(req) {
   const token = req.header('X-Access-Token');
   const payload = getSessionPayload(token);
   return payload.user_hash;
+}
+
+export function removeTrailingSlash(url) {
+  let clean_str = url;
+  const lastIndex = url.length - 1;
+  if (url[lastIndex] === '/') {
+    clean_str =  clean_str.slice(0, lastIndex);
+  }
+  return clean_str;
 }
