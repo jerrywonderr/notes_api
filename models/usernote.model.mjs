@@ -2,23 +2,30 @@ import { queryDB } from "../db/db.mjs";
 import Note from "./notes.model.mjs";
 
 class UserNote {
+
+    #user_hash = '';
+
     /**
      * Simply initializes a UserNote instance to manage a user's note
      * Arguments:
      *     @param {string} user_hash: Unique hash of the user to be worked with
      */
     constructor(user_hash) {
-        this.user_hash = user_hash;
+        this.#user_hash = user_hash;
+    }
+
+    get user_hash() {
+        return this.#user_hash;
     }
 
     /**
      * Gets all notes attached to the user
      * @returns an object of the form 
-     *  {
-     *      data: [],
+     *  `{
+     *      data: Array,
      *      error: boolean,
      *      message: string
-     *  }
+     *  }`
      */
     async all() {
         const query = `SELECT * FROM notes WHERE user_hash = ?`;
@@ -31,11 +38,11 @@ class UserNote {
      * 
      * @param {string} hash_code the hash_code of the note to be fetched
      * @returns an object of the form 
-     *  {
-     *      data: [],
+     *  `{
+     *      data: Array,
      *      error: boolean,
      *      message: string
-     *  }
+     *  }`
      */
     async get(hash_code) {
         let response;
@@ -57,11 +64,11 @@ class UserNote {
      * @param {string} title the title of the note
      * @param {string} content the content of the note
      * @returns an object of the form 
-     *  {
-     *      data: [],
+     *  `{
+     *      data: Array,
      *      error: boolean,
      *      message: string
-     *  }
+     *  }`
      */
     async new(title, content) {
         const note = new Note(this.user_hash);
@@ -77,11 +84,11 @@ class UserNote {
      * @param {string} title the new note title
      * @param {string} content the new note content
      * @returns an object of the form 
-     *  {
-     *      data: [],
+     *  `{
+     *      data: Array,
      *      error: boolean,
      *      message: string
-     *  }
+     *  }`
      */
     async update(hash_code, title='', content='') {
         let response;
@@ -102,11 +109,11 @@ class UserNote {
      * Deletes a user's note
      * @param {string} hash_code the hash code of the note to be deleted
      * @returns an object of the form 
-     *  {
-     *      data: [],
+     *  `{
+     *      data: Array,
      *      error: boolean,
      *      message: string
-     *  }
+     *  }`
      */
     async delete(hash_code) {
         let response;

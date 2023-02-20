@@ -28,8 +28,8 @@ class Note extends BaseModel {
             }
             const query = `SELECT * FROM ${this.#tableName} WHERE \`hash_code\`=? AND user_hash=?`;
             const result = await queryDB(query, [this.hash_code,, this.user_hash]);
-            if (!result || result.error) {
-                throw Error(result.message);
+            if (result.data.length == 0 || result.error) {
+                throw Error(`Note not found.`);
             } 
             this.title = result.data[0].title;
             this.content = result.data[0].content;

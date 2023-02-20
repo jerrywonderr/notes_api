@@ -14,6 +14,17 @@ const pool = () => mysql.createPool({
     connectionLimit: 10,
 });
 
+/**
+ * 
+ * @param {string} query the query to be executed
+ * @param {Array} params an array of params to be subsituted into the query string
+ * @returns an object of the form
+ * `{
+        error: boolean,
+        data: Array,
+        message: string
+    }`
+ */
 export async function queryDB(query, params) {
     const response = {
         error: false,
@@ -23,10 +34,8 @@ export async function queryDB(query, params) {
     try {
         const client = pool();
         const result = await client.execute(query, params);
-        // console.log(result);
         response.data = result[0];
     } catch (e) {
-        console.log(e.sqlMessage);
         response.error = true;
         response.message = e.sqlMessage;
     }
