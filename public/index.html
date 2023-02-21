@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#1f2463">
+    <meta name="msapplication-TileColor" content="#1f2463">
+    <meta name="theme-color" content="#1f2463">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes API Docs</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <div class="img-row">
+        <div class="logo">
+            <img src="./media/note-sticky.svg" alt="Contribute to Notes API on github">
+            Notes
+        </div>
+        
+         <a href="https://github.com/JerryWonder2126/notes_api">
+            <img src="./media/github.svg" alt="Contribute to Notes API on github">
+         </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-1">
+                <div>
+                    <h1>Notes API DOCs</h1>
+                    <p>A simple API that helps you create and manage notes.</p>
+                    <p id="call-to-action"><b>Sign up</b> to get started for <b>free</b> <button class="signup-btn" id="signup-btn">sign up</button></p>
+                    <div id="success-message" >
+                        <p id="signup-success">
+                            Account successfully created! Now, <a href="https://github.com/JerryWonder2126/notes_api" class="link">read the docs</a>  to 
+                            see guide on how to use this API
+                        </p>
+                    </div>
+                    <div class="signup-form">
+                        <form id="signup-form">
+                            <div class="loader-wrapper" id="loader-wrapper">
+                                <div class="loader"></div>
+                            </div>
+                            <div class="form-field">
+                                <p id="error-text" class="error-text"></p>
+                            </div>
+                            <div class="form-field">
+                                <input type="email" name="email" id="email" placeholder="Email" autocomplete="true" required aria-required="true">
+                            </div>
+                            <div class="form-field">
+                                <input type="password" name="password" id="password" placeholder="Password" required aria-required="true">
+                            </div>
+                            <input type="submit" value="Sign Up" role="button" class="signup-button">
+                        </form>
+                    </div>
+                    <p>
+                        <i>If you have an account already, look up the docs <a class="link" href="https://github.com/JerryWonder2126/notes_api">here</a> to get started</i>
+                    </p>
+                </div>
+            </div>
+            <div class="col col-2">
+                <img src="./media/featured.png" class="feature-img2" alt="Notes API feature image" >
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
