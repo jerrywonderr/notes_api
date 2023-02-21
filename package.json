@@ -7,7 +7,7 @@
   "author": "Joseph Jeremiah <jerrycul2001@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon -r dotenv/config server.js",
     "start": "node server.js"
   },
   "dependencies": {
