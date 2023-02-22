@@ -1,6 +1,6 @@
 # Notes API
 ## Description
-A simple API built on Node.js to help users create and manage notes. 
+A simple API built on Node.js to help users create and manage notes. This project is inspired by Uptick Engineering Fellowship and is written to fulfil one of the requirements for joining the fellowship.
 ## How to consume this API
 To get started, [create an account](https://notesapi.cyclic.app/), then you can use those credentials to get an access token. This token should be placed in the header of every request with the key of `X-Access-Token`.
 
@@ -14,3 +14,6 @@ The following actions can be carried out on this API:
 * Delete a note - DELETE - /notes/<hash_code>
 
 More details can be found on the [wiki page](https://github.com/JerryWonder2126/notes_api/wiki)
+
+## Credit
+Uptick Engineering Fellowship
