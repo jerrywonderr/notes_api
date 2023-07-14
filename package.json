@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple API to manages notes",
   "main": "server.js",
-  "repository": "https://github.com/JerryWonder2126/notes_api.git",
+  "repository": "https://github.com/jerrywonder/notes_api.git",
   "author": "Joseph Jeremiah <jerrycul2001@gmail.com>",
   "license": "MIT",
   "scripts": {
